@@ -9,7 +9,7 @@ function showofication(msg, type) {
       bgColor = "linear-gradient(to right,#93291e,#ed213a";
       break;
     default:
-    bgColor="#000"
+      bgColor = "#000";
   }
 
   Toastify({
@@ -35,7 +35,6 @@ const setTodosInLocalStorage = (newTodos) => {
 const showOutput = (output) => {
   document.getElementById("output").innerHTML = output;
 };
-
 // for input value
 
 const getFieldValue = (fieldId) => {
@@ -45,9 +44,9 @@ const setFieldValue = (fieldId, value) => {
   document.getElementById(fieldId).value = value;
 };
 
-// emptyinput
+// emptyFieldvalue
 
-const emptyinput = () => {
+const emptyFieldvalue = () => {
   document.getElementById("title").value = "";
   document.getElementById("location").value = "";
   document.getElementById("description").value = "";
@@ -58,6 +57,7 @@ const Randomid = () => {
   return Math.random().toString(36).slice(2);
 };
 
+// okcode
 // username change function
 const askuser = () => {
   let userName;
@@ -109,13 +109,13 @@ const handleSubmit = () => {
   todo.id = Randomid();
   todo.dateCreate = new Date().getTime();
   todo.status = "active";
-
-  const todos = JSON.parse(localStorage.getItem("todo")) || [];
+// okcode
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
   todos.push(todo);
   localStorage.setItem("todos", JSON.stringify(todos));
   showofication("new todo is succesfully add", "success");
   showtodos();
-  emptyinput();
+  emptyFieldvalue();
 };
 const showtodos = () => {
   // clearoutput();
@@ -183,6 +183,7 @@ const editTodo = (event) => {
   document.getElementById("addTaskButton").style.display = "none";
   document.getElementById("UpdateTaskButton").style.display = "block";
 };
+//  doneok thishandleedi
 const handleEdit = () => {
   const todoForEdit = JSON.parse(localStorage.getItem("todoForEdit"));
   let updatedtitle = getFieldValue("title");
@@ -198,22 +199,25 @@ const handleEdit = () => {
   updateTodo.dateModified = new Date().getTime();
   const todos = JSON.parse(localStorage.getItem("todos"));
 
-  let todoAfterUpdated = todos.map((todo) => {
+  let todosAfterUpdated = todos.map((todo) => {
     if (todo.id === todoForEdit.id) return updateTodo;
     return todo;
   });
   localStorage.setItem("todos", JSON.stringify(todosAfterUpdated));
   showofication("A todo is succesfully  updated", "success");
+
   showtodos();
-  emptyinput();
+  emptyFieldvalue();
   document.getElementById("addTaskButton").style.display = "block";
   document.getElementById("UpdateTaskButton").style.display = "none";
 };
 
+
+//  doneok deleteTodo
 const deleteTodo = (event) => {
   let todoId = event.target.getAttribute("data-value");
   const todos = JSON.parse(localStorage.getItem("todos"));
-
+  
   let todosAfterDelete = todos.filter((todo) => {
     return todo.id !== todoId;
   });
@@ -221,3 +225,4 @@ const deleteTodo = (event) => {
   showofication("A todo is succesfully  delete", "success");
   showtodos();
 };
+
