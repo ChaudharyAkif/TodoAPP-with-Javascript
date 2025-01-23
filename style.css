@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.nav11 {
+  background: #fe0501;
+}
+nav {
+  background: #022738;
+}
+#UpdateTaskButton,
+#addTaskButton {
+  background: #fe0501; /* Bright red background */
+  color: white; /* Text color */
+  border: none; /* Remove default border */
+  padding: 10px 15px; /* Add some padding */
+  cursor: pointer; /* Change cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Optional hover effect */
+#UpdateTaskButton:hover,
+#addTaskButton:hover {
+  background: #d40400; /* Darker shade on hover */
+}
+/* #output{
+height: 300px;
+width: 100%;
+border: 2px solid black;
+
+} */
+#UpdateTaskButton{
+  display: none;
+}
